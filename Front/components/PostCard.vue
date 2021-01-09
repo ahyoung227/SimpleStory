@@ -1,39 +1,65 @@
 <template>
-  <v-container>
-    <v-card>
-      <v-img />
-      <v-card-text>
-        <div>
-          <h3>{{ post.user.nickname }}</h3>
-          <div>{{ post.content }}</div>
-        </div>
-      </v-card-text>
-      <v-card-actions>
-        <v-btn text color="orange"><v-icon>mdi-twitter-retweet</v-icon></v-btn>
-        <v-btn text color="orange"><v-icon>mdi-heart-outline</v-icon></v-btn>
-        <v-btn text color="orange"><v-icon>mdi-comment-outline</v-icon></v-btn>
-        <v-menu offset-y open-on-hover>
-          <template v-slot:activator="{ on }">
-            <v-btn text color="orange" v-on="on">
-              <v-icon>mdi-dots-horizontal</v-icon>
-            </v-btn>
-          </template>
-          <div style="background: white">
-            <v-btn dark color="red" @click="onRemovePost">delete</v-btn>
-            <v-btn text color="orange" @click="onEditPost">Edit</v-btn>
+  <div>
+    <v-container>
+      <v-card>
+        <v-img />
+        <v-card-text>
+          <div>
+            <h3>{{ post.user.nickname }}</h3>
+            <div>{{ post.content }}</div>
           </div>
-        </v-menu>
-      </v-card-actions>
-    </v-card>
-  </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn text color="orange"><v-icon>mdi-twitter-retweet</v-icon></v-btn>
+          <v-btn text color="orange"><v-icon>mdi-heart-outline</v-icon></v-btn>
+          <v-btn text color="orange" @click="onToggleComment"><v-icon>mdi-comment-outline</v-icon></v-btn>
+          <v-menu offset-y open-on-hover>
+            <template v-slot:activator="{ on }">
+              <v-btn text color="orange" v-on="on">
+                <v-icon>mdi-dots-horizontal</v-icon>
+              </v-btn>
+            </template>
+            <div style="background: white">
+              <v-btn dark color="red" @click="onRemovePost">delete</v-btn>
+              <v-btn text color="orange" @click="onEditPost">Edit</v-btn>
+            </div>
+          </v-menu>
+        </v-card-actions>
+      </v-card>
+      <template v-if="commentOpened">
+        <comment-form :post-id="String(post.id)"></comment-form>
+        <v-list>
+          <v-list-item v-for="c in post.comments" :key="c.id">
+            <v-list-item-avatar color="teal">
+              <span>{{c.User.nickname[0]}}</span>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title>{{c.User.nickname}}</v-list-item-title>
+              <v-list-item-subtitle>{{c.content}}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </template>
+    </v-container>
+  </div>
 </template>
+
 <script>
+import CommentForm from "~/components/CommentForm";
 
 export default {
+  components: {
+    CommentForm
+  },
   props: {
     post: {
       type: Object,
       required: true
+    }
+  },
+  data() {
+    return {
+      commentOpened: false
     }
   },
   methods: {
@@ -44,6 +70,10 @@ export default {
     },
     onEditPost() {
 
+    },
+    onToggleComment() {
+      this.commentOpened= !this.commentOpened;
+      console.log(this.commentOpened)
     }
   },
 }

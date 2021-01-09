@@ -12,10 +12,12 @@
     </v-card>
   </v-container>
   <v-container v-else>
-    <v-card>
-      {{me.nickname}}, you are logged in
-      <v-btn @click="onlogOut">Logout</v-btn>
-    </v-card>
+      <v-card>
+        <v-container>
+          {{me.nickname}}, you are logged in
+          <v-btn @click="onlogOut">Logout</v-btn>
+        </v-container>
+      </v-card>
   </v-container>
 </template>
 <script>
