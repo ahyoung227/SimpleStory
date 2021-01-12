@@ -8,7 +8,7 @@
         <v-spacer></v-spacer>
         <v-toolbar-items>
           <v-text-field label="search" hide-details prepend-icon="mdi-magnify" :style="{ display: 'flex', alignItems: 'center' }" />
-          <v-btn text nuxt to="/profile">
+          <v-btn text nuxt to="/profile" >
             <div>Profile</div>
           </v-btn>
           <v-btn text nuxt to="/signup">
