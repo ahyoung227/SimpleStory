@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f79abb5-ca11-4001-a388-4d8cfc49c2fc" name="Default Changelist" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/Back/models/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Back/passport/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/components/FollowList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/components/FollowList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/components/PostCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/components/PostCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/middleware/anonymous.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/middleware/anonymous.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/middleware/authenticated.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/middleware/authenticated.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/pages/post/_id/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pages/post/_id/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/pages/profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pages/profile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/pages/signup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pages/signup.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/pages/user/_id/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pages/user/_id/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/store/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/store/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/store/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/store/users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Back/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +63,7 @@
       <workItem from="1610179563150" duration="56000" />
       <workItem from="1610179774595" duration="10438000" />
       <workItem from="1610217985025" duration="6594000" />
-      <workItem from="1610427379263" duration="31645000" />
+      <workItem from="1610427379263" duration="31716000" />
     </task>
     <servers />
   </component>
