@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <v-card style="margin-bottom: 20px" >
+      <v-card style="margin-bottom: 20px">
         <v-container>
           <v-subheader>My profile</v-subheader>
           <v-form v-model="valid" @submit.prevent="onChangeNickname">
@@ -17,14 +17,16 @@
       </v-card>
       <v-card style="margin-bottom: 20px">
         <v-container>
-          <v-subheader>following</v-subheader>
+          <v-subheader>follower</v-subheader>
           <follow-list :follow="followers" :remove="deleteFollowers"/>
+          <v-btn dark v-if="hasMoreFollowers" @click="loadMoreFollowers">More</v-btn>
         </v-container>
       </v-card>
       <v-card style="margin-bottom: 20px">
         <v-container>
-          <v-subheader>follower</v-subheader>
+          <v-subheader>following</v-subheader>
           <follow-list :follow="followings" :remove="deleteFollowings"/>
+          <v-btn dark v-if="hasMoreFollowings" @click="loadMoreFollowings">More</v-btn>
         </v-container>
       </v-card>
     </v-container>
@@ -49,11 +51,21 @@ export default {
   },
   computed: {
     followers() {
-      return this.$store.state.users.followers
+      return this.$store.state.users.followerList;
     },
     followings() {
-      return this.$store.state.users.followings
+      return this.$store.state.users.followingList;
+    },
+    hasMoreFollowers() {
+      return this.$store.state.users.hasMoreFollowers;
+    },
+    hasMoreFollowings() {
+      return this.$store.state.users.hasMoreFollowings;
     }
+  },
+  fetch( { store } ) {
+    store.dispatch('users/loadFollowers');
+    store.dispatch('users/loadFollowings')
   },
   methods: {
     onChangeNickname() {
@@ -79,6 +91,12 @@ export default {
       this.$store.dispatch('users/deleteFollowings', {
         userId: id
       })
+    },
+    loadMoreFollowers() {
+      this.$store.dispatch('users/loadFollowers')
+    },
+    loadMoreFollowings() {
+      this.$store.dispatch('users/loadFollowings')
     }
   },
   head() {
@@ -86,6 +104,7 @@ export default {
       title: 'Profile',
     };
   },
+  middleware: "authenticated"
 };
 </script>
 

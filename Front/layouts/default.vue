@@ -7,7 +7,16 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-text-field label="search" hide-details prepend-icon="mdi-magnify" :style="{ display: 'flex', alignItems: 'center' }" />
+          <v-form @submit.prevent="onSearchHashTag">
+            <div :style="{ display:'flex', height: '100%', alignItem: 'center' }">
+              <v-text-field
+                lable="search"
+                v-model="hashtag"
+                hide-details
+                prepend-icon="mdi-magnify"
+                :style="{ display: 'flex', alignItems: 'center' }"/>
+            </div>
+          </v-form>
           <v-btn text nuxt to="/profile" >
             <div>Profile</div>
           </v-btn>
@@ -31,6 +40,11 @@
 <script>
 import LoginForm from '~/components/LoginForm';
 export default {
+  data() {
+    return {
+      hashtag: "",
+    }
+  },
   components: {
     LoginForm,
   },
@@ -40,7 +54,12 @@ export default {
     }
   },
   methods: {
-
+    onSearchHashTag() {
+      this.$router.push({
+        path: `/hashtag/${this.hashtag}`
+      })
+      this.hashtag = '';
+    }
   }
 }
 </script>

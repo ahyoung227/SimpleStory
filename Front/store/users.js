@@ -1,5 +1,7 @@
 export const state = () => ({
     me: null,
+    followerList: [],
+    followingList: [],
     followers: [{
         id: 1,
         name: "Jahyun"
@@ -17,8 +19,14 @@ export const state = () => ({
         id: 2,
         name: "Ahyoung"
     }
-    ]
+    ],
+    hasMoreFollowers: true,
+    hasMoreFollowings: true,
 });
+
+const totalFollowers = 8;
+const totalFollowings = 6;
+const limit = 3;
 
 export const mutations = {
     setMe(state, payload) {
@@ -41,10 +49,33 @@ export const mutations = {
         const index = state.followings.findIndex( v => v.id === payload.userId )
         state.followings.splice(index, 1)
     },
+    loadFollowers(state) {
+        const diff = totalFollowers - state.followerList.length;
+        const fakeUsers = Array(diff > limit ? limit : diff).fill().map(v => ({
+            id: Math.random().toString(),
+            nickname: Math.floor(Math.random() * 1000),
+        }));
+        state.followerList = state.followerList.concat(fakeUsers);
+        state.hasMoreFollowers = fakeUsers.length === limit;
+    },
+    loadFollowings(state) {
+        const diff = totalFollowings - state.followingList.length;
+        const fakeUsers = Array(diff > limit ? limit : diff).fill().map(v => ({
+            id: Math.random().toString(),
+            nickname: Math.floor(Math.random() * 1000),
+        }));
+        state.followingList = state.followingList.concat(fakeUsers);
+        state.hasMoreFollowings = fakeUsers.length === limit
+    }
 };
 
 export const actions = {
     signUp({ commit, state }, payload) {
+        this.$axios.post('http://localhost:3085/user', {
+           email: payload.email,
+           nickname: payload.nickname,
+           password: payload.password,
+        });
         commit('setMe', payload);
     }, 
     logIn({ commit }, payload) {
@@ -68,4 +99,14 @@ export const actions = {
     deleteFollowings({ commit }, payload) {
         commit('deleteFollowings', payload)
     },
+    loadFollowers({ commit, state }, payload) {
+        if (state.hasMoreFollowers) {
+            commit('loadFollowers');
+        }
+    },
+    loadFollowings({ commit, state }, payload) {
+        if (state.hasMoreFollowings) {
+            commit('loadFollowings');
+        }
+    }
 }

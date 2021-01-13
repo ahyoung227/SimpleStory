@@ -1,0 +1,56 @@
+<template>
+  <div>
+    <post-card v-for= "p in mainPosts" :key="p.id" :post="p" />
+  </div>
+</template>
+
+<script>
+import PostCard from '~/components/PostCard'
+
+export default {
+  components: {
+    PostCard,
+  },
+  computed: {
+    me() {
+      return this.$store.state.users.me;
+    },
+    mainPosts() {
+      return this.$store.state.posts.mainPosts;
+    },
+    hasMorePost() {
+      return this.$store.state.posts.hasMorePost;
+    }
+  },
+  data() {
+    return {
+      name: 'nuxt.js'
+    }
+  },
+  head: {
+    title: 'main'
+  },
+  fetch({ store }) {
+    store.dispatch('posts/loadPosts');
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll);
+  },
+  methods: {
+    onScroll() {
+      if(window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
+        if(this.hasMorePost) {
+          this.$store.dispatch('posts/loadPosts')
+        }
+      }
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

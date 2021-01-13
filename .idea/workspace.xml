@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9f79abb5-ca11-4001-a388-4d8cfc49c2fc" name="Default Changelist" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/Back/models/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Back/passport/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/components/FollowList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/components/FollowList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/components/PostCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/components/PostCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/layouts/default.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/middleware/anonymous.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/middleware/anonymous.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/middleware/authenticated.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/middleware/authenticated.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pages/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pages/post/_id/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pages/post/_id/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pages/profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pages/profile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pages/signup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pages/signup.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pages/user/_id/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pages/user/_id/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/store/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/store/posts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/store/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/store/users.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1mmGkfUVZ45F2PU7JVXRCmGdGY7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+    <property name="vuejs.nuxt.types-notification-shown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Back" />
+      <recent name="$PROJECT_DIR$/Front/pages/user/_id" />
+      <recent name="$PROJECT_DIR$/Front/pages/post" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="uers.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Back/models/uers.js" working-dir="$PROJECT_DIR$/Back/models">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.uers.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9f79abb5-ca11-4001-a388-4d8cfc49c2fc" name="Default Changelist" comment="" />
+      <created>1610091496895</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610091496895</updated>
+      <workItem from="1610091498160" duration="5047000" />
+      <workItem from="1610178142593" duration="1301000" />
+      <workItem from="1610179563150" duration="56000" />
+      <workItem from="1610179774595" duration="10438000" />
+      <workItem from="1610217985025" duration="6594000" />
+      <workItem from="1610427379263" duration="31645000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+  </component>
+</project>
