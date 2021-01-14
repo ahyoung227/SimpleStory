@@ -1,10 +1,10 @@
 <template>
   <v-container v-if="!me">
     <v-card>
-      <v-form v-model="valid" ref="form" @submit.prevent="onSubmitForm">
+      <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
         <v-container>
-          <v-text-field label="email" type="email" :rules= "emailRules" required />
-          <v-text-field label="password" type="password" :rules= "passwordRules" required />
+          <v-text-field v-model="email" label="email" type="email" :rules= "emailRules" required />
+          <v-text-field v-model="password" label="password" type="password" :rules= "passwordRules" required />
           <v-btn color="green" type="submit" :disabled="!valid">login</v-btn>
           <v-btn nuxt to="/signup">signup</v-btn>
         </v-container>
@@ -12,12 +12,12 @@
     </v-card>
   </v-container>
   <v-container v-else>
-      <v-card>
-        <v-container>
-          {{me.nickname}}, you are logged in
-          <v-btn @click="onlogOut">Logout</v-btn>
-        </v-container>
-      </v-card>
+    <v-card>
+      <v-container>
+        {{me.nickname}}, you are logged in
+        <v-btn @click="onLogOut">Logout</v-btn>
+      </v-container>
+    </v-card>
   </v-container>
 </template>
 <script>
@@ -46,11 +46,13 @@ export default {
       if (this.$refs.form.validate()) {
         this.$store.dispatch('users/logIn', {
           email: this.email,
-          nickname: "ahyoung",
-        })
+          password: this.password,
+        });
+        this.email="",
+        this.password=""
       }
     },
-    onlogOut() {
+    onLogOut() {
       this.$store.dispatch('users/logOut');
     }
   }

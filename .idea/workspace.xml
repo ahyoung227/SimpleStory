@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f79abb5-ca11-4001-a388-4d8cfc49c2fc" name="Default Changelist" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/Back/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Back/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/components/LoginForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/components/LoginForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/components/PostCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/components/PostCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/components/PostForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/components/PostForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/store/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/store/posts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/store/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/store/users.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +37,7 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="vue.rearranger.settings.migration" value="true" />
     <property name="vuejs.nuxt.types-notification-shown" value="true" />
   </component>
@@ -41,12 +49,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="uers.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Back/models/uers.js" working-dir="$PROJECT_DIR$/Back/models">
+    <configuration name="user.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="uers.js" working-dir="$PROJECT_DIR$/Back/models">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.uers.js" />
+        <item itemvalue="Node.js.user.js" />
       </list>
     </recent_temporary>
   </component>
@@ -63,7 +71,8 @@
       <workItem from="1610179563150" duration="56000" />
       <workItem from="1610179774595" duration="10438000" />
       <workItem from="1610217985025" duration="6594000" />
-      <workItem from="1610427379263" duration="31716000" />
+      <workItem from="1610427379263" duration="49255000" />
+      <workItem from="1610590248234" duration="28608000" />
     </task>
     <servers />
   </component>
