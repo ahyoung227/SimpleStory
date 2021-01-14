@@ -4,12 +4,6 @@
     <list default="true" id="9f79abb5-ca11-4001-a388-4d8cfc49c2fc" name="Default Changelist" comment="first commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Back/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Back/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/components/LoginForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/components/LoginForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/components/PostCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/components/PostCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/components/PostForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front/components/PostForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/store/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/store/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/store/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front/store/users.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +66,7 @@
       <workItem from="1610179774595" duration="10438000" />
       <workItem from="1610217985025" duration="6594000" />
       <workItem from="1610427379263" duration="49255000" />
-      <workItem from="1610590248234" duration="28608000" />
+      <workItem from="1610590248234" duration="28750000" />
     </task>
     <servers />
   </component>
