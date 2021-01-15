@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const path = require('path')
+const path = require('path');
 
 const db = require('../models')
 const { isLoggedIn } = require('./middlewares');
@@ -40,13 +40,25 @@ router.post('/', isLoggedIn, async (req, res, next) => {
             })));
             await newPost.addHashTags(result.map(r=> r[0]))
         }
-        console.log(newPost)
+        if (req.body.image) {
+            if(Array.isArray(req.body.image)) {
+                await Promise.all(req.body.image.map((image) => {
+                    return db.Image.create({
+                        src: image,
+                        PostId: newPost.id
+                    });
+                }));
+            } else {
+                await db.Image.create({ src: req.body.image , postId: newPost.id });
+            }
+        }
         const fullPost = await db.Post.findOne({
             where: { id: newPost.id },
             include: [{
                 model: db.User,
                 attributes: ['id', 'nickname']
-            }],
+            }, {
+                model: db.Image}],
         });
         return res.json(fullPost);
     } catch (err) {
@@ -54,5 +66,68 @@ router.post('/', isLoggedIn, async (req, res, next) => {
         next(err);
     }
 });
+
+router.delete('/:id', async (req, res, next) => {
+    try {
+        await db.Post.destroy({
+            where: {
+                id: req.params.id,
+            }
+        });
+        res.send('Successfully deleted')
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+})
+
+router.get('/:id/comments', async (req, res, next) => {
+    try {
+        const post = await db.Post.findOne({where: {id: req.params.id}});
+        if (!post) {
+            return res.status(404).send('Post does not exist');
+        }
+        const comments = await db.Comment.findAll({
+            where: {
+                postId: req.params.id,
+            },
+            include: [{
+                model: db.User,
+                attributes: ['id', 'nickname']
+            }],
+            order: [['createdAt', 'ASC']]
+        });
+        res.json(comments)
+    } catch (err) {
+        console.error(err)
+        next(err);
+    }
+})
+
+router.post('/:id/comment', isLoggedIn, async (req, res, next) => {
+    try {
+        const post = await db.Post.findOne({where: {id: req.params.id }});
+        if (!post) {
+            return res.status(404).send('Post does not exist');
+        }
+        const newComment = await db.Comment.create({
+            PostId: post.id,
+            UserId: req.user.id,
+            content: req.body.content,
+        });
+        const comment = await db.Comment.findOne({
+            where: {
+                id: newComment.id,
+            },
+            include: [{
+                model: db.User,
+                attribute: ['id', 'nickname']
+            }],
+        });
+        return res.json(comment)
+    } catch (err) {
+        next(err);
+    }
+})
 
 module.exports = router;

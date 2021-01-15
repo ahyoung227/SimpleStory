@@ -1,7 +1,7 @@
 <template>
   <div>
     <post-form v-if="me" />
-    <post-card v-for= "p in mainPosts" :key="p.id" :post="p" />
+    <post-card v-for = "p in mainPosts" :key="p.id" :post="p" />
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
     PostCard,
     PostForm,
   },
+  data() {
+    return {
+      name: 'nuxt.js'
+    }
+  },
   computed: {
     me() {
       return this.$store.state.users.me;
@@ -23,11 +28,6 @@ export default {
     },
     hasMorePost() {
       return this.$store.state.posts.hasMorePost;
-    }
-  },
-  data() {
-    return {
-      name: 'nuxt.js'
     }
   },
   head: {

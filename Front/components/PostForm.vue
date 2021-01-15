@@ -18,7 +18,7 @@
         <input ref="imageInput" type="file" multiple hidden @change="onChangeImages">
         <v-btn @click="onClickImageUpload" type="button">image upload</v-btn>
           <div v-for="(p, i) in imagePaths" :key="p" style="display: inline-block">
-            <img :src="`http://localhost:3085/${p}`" alt="p" style="width: 200px; height: 400px;">
+            <img :src="`http://localhost:3085/${p}`" alt="p" style="width: 200px;">
             <div>
               <button @click="onRemoveImage(i)" type="button">remove</button>
             </div>
