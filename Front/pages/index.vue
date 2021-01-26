@@ -1,7 +1,7 @@
 <template>
   <div>
     <post-form v-if="me" />
-    <post-card v-for = "p in mainPosts" :key="p.id" :post="p" />
+    <post-card v-for ="p in mainPosts" :key="p.id" :post="p" />
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
     title: 'main'
   },
   fetch({ store }) {
-    store.dispatch('posts/loadPosts');
+    return store.dispatch('posts/loadPosts');
   },
   mounted() {
     window.addEventListener('scroll', this.onScroll);

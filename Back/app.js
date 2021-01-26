@@ -17,7 +17,7 @@ passportConfig();
 
 app.use(morgan('dev'))
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3080',
     credentials: true,
 }));
 app.use('/', express.static('uploads'));
@@ -43,12 +43,6 @@ app.get('/', (req, res) => {
 app.use('/user', userRouter);
 app.use('/post', postRouter);
 app.use('/posts', postsRouter);
-
-app.post('/post', (req, res)=>{
-    if(req.isAuthenticated()) {
-
-    }
-})
 
 app.listen(3085, () => {
     console.log(`backend ${3085} is ready`)
