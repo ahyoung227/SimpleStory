@@ -64,8 +64,8 @@ export default {
     }
   },
   fetch( { store } ) {
-    return store.dispatch('users/loadFollowers');
-    return store.dispatch('users/loadFollowings')
+    return store.dispatch('users/loadFollowers', { offset:0 });
+    return store.dispatch('users/loadFollowings', { offset:0 })
   },
   methods: {
     onChangeNickname() {
@@ -77,9 +77,9 @@ export default {
       this.$store.dispatch('users/addFollowers', {
       })
     },
-    deleteFollowers(id) {
-      this.$store.dispatch('users/deleteFollowers', {
-        userId: id
+    deleteFollowers(userId) {
+      this.$store.dispatch('users/removeFollower', {
+         userId
       })
     },
     addFollowings() {
@@ -87,9 +87,9 @@ export default {
 
       })
     },
-    deleteFollowings(id) {
-      this.$store.dispatch('users/deleteFollowings', {
-        userId: id
+    deleteFollowings(userId) {
+      this.$store.dispatch('users/unfollow', {
+        userId
       })
     },
     loadMoreFollowers() {

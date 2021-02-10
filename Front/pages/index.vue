@@ -1,14 +1,15 @@
 <template>
-  <div>
+  <v-container>
     <post-form v-if="me" />
-    <post-card v-for ="p in mainPosts" :key="p.id" :post="p" />
-  </div>
+    <div>
+      <post-card v-for="p in mainPosts" :key="p.id" :post="p" />
+    </div>
+  </v-container>
 </template>
 
 <script>
-import PostCard from '~/components/PostCard'
-import PostForm from '~/components/PostForm'
-
+import PostCard from '~/components/PostCard';
+import PostForm from '~/components/PostForm';
 export default {
   components: {
     PostCard,
@@ -16,8 +17,8 @@ export default {
   },
   data() {
     return {
-      name: 'nuxt.js'
-    }
+      name: 'Nuxt.js',
+    };
   },
   computed: {
     me() {
@@ -30,11 +31,8 @@ export default {
       return this.$store.state.posts.hasMorePost;
     }
   },
-  head: {
-    title: 'main'
-  },
   fetch({ store }) {
-    return store.dispatch('posts/loadPosts');
+    return store.dispatch('posts/loadPosts', { reset: true });
   },
   mounted() {
     window.addEventListener('scroll', this.onScroll);
@@ -44,16 +42,16 @@ export default {
   },
   methods: {
     onScroll() {
-      if(window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
-        if(this.hasMorePost) {
-          this.$store.dispatch('posts/loadPosts')
+      console.log('scroll');
+      if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
+        if (this.hasMorePost) {
+          this.$store.dispatch('posts/loadPosts');
         }
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>

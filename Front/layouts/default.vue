@@ -20,7 +20,10 @@
           <v-btn text nuxt to="/profile" >
             <div>Profile</div>
           </v-btn>
-          <v-btn text nuxt to="/signup">
+          <v-btn v-if="me" text @click="onLogOut">
+            <div>logout</div>
+          </v-btn>
+          <v-btn v-else text nuxt to="/signup">
             <div>Signup</div>
           </v-btn>
         </v-toolbar-items>
@@ -51,6 +54,9 @@ export default {
   computed: {
     name() {
       return this.$store.state.posts.name;
+    },
+    me() {
+      return this.$store.state.users.me;
     }
   },
   methods: {
@@ -59,6 +65,9 @@ export default {
         path: `/hashtag/${this.hashtag}`
       })
       this.hashtag = '';
+    },
+    onLogOut() {
+      this.$store.dispatch('users/logOut');
     }
   }
 }

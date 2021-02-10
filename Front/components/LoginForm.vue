@@ -16,6 +16,11 @@
       <v-container>
         {{me.nickname}}, you are logged in
         <v-btn @click="onLogOut">Logout</v-btn>
+        <v-row>
+          <v-col col="4">{{me.Followings.length}} Following</v-col>
+          <v-col col="4">{{me.Followers.length}} Follower</v-col>
+          <v-col col="4">{{me.Posts.length}} Post</v-col>
+        </v-row>
       </v-container>
     </v-card>
   </v-container>

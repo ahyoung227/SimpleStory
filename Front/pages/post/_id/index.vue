@@ -1,56 +1,44 @@
 <template>
-  <div>
-    <post-card v-for= "p in mainPosts" :key="p.id" :post="p" />
+  <v-container v-if="post">
+    <post-card :post="post" />
+  </v-container>
+  <div v-else>
+    Post does not exist.
   </div>
 </template>
 
 <script>
-import PostCard from '~/components/PostCard'
-
+import PostCard from '~/components/PostCard';
 export default {
   components: {
     PostCard,
   },
   computed: {
-    me() {
-      return this.$store.state.users.me;
+    post() {
+      return this.$store.state.posts.mainPosts.find(v => v.id === parseInt(this.$route.params.id, 10));
     },
-    mainPosts() {
-      return this.$store.state.posts.mainPosts;
-    },
-    hasMorePost() {
-      return this.$store.state.posts.hasMorePost;
-    }
   },
-  data() {
+  fetch({ store, params }) {
+    return store.dispatch('posts/loadPost', params.id);
+  },
+  head() {
     return {
-      name: 'nuxt.js'
-    }
-  },
-  head: {
-    title: 'main'
-  },
-  fetch({ store }) {
-    store.dispatch('posts/loadPosts');
-  },
-  mounted() {
-    window.addEventListener('scroll', this.onScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.onScroll);
-  },
-  methods: {
-    onScroll() {
-      if(window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
-        if(this.hasMorePost) {
-          this.$store.dispatch('posts/loadPosts')
-        }
-      }
-    }
+      title: `${this.post.User.nickname}님의 게시글`,
+      meta: [{
+        hid: 'desc', name: 'description', content: this.post.content,
+      }, {
+        hid: 'ogtitle', property: 'og:title', content: `${this.post.User.nickname}님의 게시글`,
+      }, {
+        hid: 'ogdesc', property: 'og:description', content: this.post.content,
+      }, {
+        hid: 'ogimage', property: 'og:image', content: this.post.Images[0] ? this.post.Images[0].src : 'https://vue.nodebird.com/vue-nodebird.png',
+      }, {
+        hid: 'ogurl', property: 'og:url', content: `https://vue.nodebird.com/post/${this.post.id}`,
+      }],
+    };
   }
-}
+};
 </script>
 
 <style>
-
 </style>

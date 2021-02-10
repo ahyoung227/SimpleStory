@@ -2,24 +2,6 @@ export const state = () => ({
     me: null,
     followerList: [],
     followingList: [],
-    followers: [{
-        id: 1,
-        name: "Jahyun"
-    },
-    {
-        id: 2,
-        name: "JJ"
-    }
-    ],
-    followings: [{
-        id: 1,
-        name: "Jinhyun"
-    },
-    {
-        id: 2,
-        name: "Ahyoung"
-    }
-    ],
     hasMoreFollowers: true,
     hasMoreFollowings: true,
 });
@@ -32,50 +14,68 @@ export const mutations = {
     setMe(state, payload) {
         state.me = payload;
     },
+    setOther(state, payload) {
+        state.other = payload;
+    },
     changeNickname(state, payload) {
         state.me.nickname = payload.nickname;
     },
-    addFollowers(state, payload) {
-        state.followers.push(payload)
+    addFollower(state, payload) {
+        state.followerList.push(payload);
     },
-    deleteFollowers(state, payload) {
-        const index = state.followers.findIndex( v => v.id === payload.userId )
-        state.followers.splice(index, 1)
+    addFollowing(state, payload) {
+        state.followingList.push(payload);
     },
-    addFollowings(state, payload) {
-        state.followings.push(payload)
+    removeFollower(state, payload) {
+        let index = state.me.Followers.findIndex(v => v.id === payload.userId);
+        state.me.Followers.splice(index, 1);
+        index = state.followerList.findIndex(v => v.id === payload.id);
+        state.followerList.splice(index, 1);
     },
-    deleteFollowings(state, payload) {
-        const index = state.followings.findIndex( v => v.id === payload.userId )
-        state.followings.splice(index, 1)
+    removeFollowing(state, payload) {
+        let index = state.me.Followings.findIndex(v => v.id === payload.userId);
+        state.me.Followings.splice(index, 1);
+        index = state.followingList.findIndex(v => v.id === payload.userId);
+        state.followingList.splice(index, 1);
     },
-    loadFollowers(state) {
-        const diff = totalFollowers - state.followerList.length;
-        const fakeUsers = Array(diff > limit ? limit : diff).fill().map(v => ({
-            id: Math.random().toString(),
-            nickname: Math.floor(Math.random() * 1000),
-        }));
-        state.followerList = state.followerList.concat(fakeUsers);
-        state.hasMoreFollowers = fakeUsers.length === limit;
+    loadFollowers(state, payload) {
+        if (payload.offset === 0) {
+            state.followingList = payload.data;
+        } else {
+            state.followingList = state.followingList.concat(payload.data);
+        }
+        state.hasMoreFollowing = payload.data.length === limit;
     },
-    loadFollowings(state) {
-        const diff = totalFollowings - state.followingList.length;
-        const fakeUsers = Array(diff > limit ? limit : diff).fill().map(v => ({
-            id: Math.random().toString(),
-            nickname: Math.floor(Math.random() * 1000),
-        }));
-        state.followingList = state.followingList.concat(fakeUsers);
-        state.hasMoreFollowings = fakeUsers.length === limit
-    }
+    loadFollowings(state, payload) {
+        if (payload.offset === 0) {
+            state.followerList = payload.data;
+        } else {
+            state.followerList = state.followerList.concat(payload.data);
+        }
+        state.hasMoreFollower = payload.data.length === limit;
+    },
+    following(state, payload) {
+        state.me.Followings.push({ id: payload.userId });
+    },
 };
 
 export const actions = {
     async loadUser({ state, commit }) {
         try {
-            const res = this.$axios.get('/user', {
+            const res = await this.$axios.get('/user', {
                 withCredentials: true,
             })
             commit('setMe', res.data);
+        } catch (err) {
+            console.error(err);
+        }
+    },
+    async loadOther({ commit }, payload) {
+        try {
+            const res = await this.$axios.get(`/user/${payload.userId}`, {
+                withCredentials: true,
+            });
+            commit('setOther', res.data);
         } catch (err) {
             console.error(err);
         }
@@ -117,28 +117,101 @@ export const actions = {
         });
     },
     changeNickname({ commit }, payload) {
-        commit('changeNickname', payload)
+        this.$axios.patch('/user/nickname',{ nickname: payload.nickname } ,{
+            withCredentials: true,
+        })
+            .then(() => {
+                commit('changeNickname', payload)
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     },
     addFollowers({ commit }, payload) {
         commit('addFollowers', payload)
     },
-    deleteFollowers({ commit }, payload) {
-        commit('deleteFollowers', payload)
-    },
     addFollowings({ commit }, payload) {
         commit('addfollowings', payload)
     },
-    deleteFollowings({ commit }, payload) {
-        commit('deleteFollowings', payload)
-    },
     loadFollowers({ commit, state }, payload) {
-        if (state.hasMoreFollowers) {
-            commit('loadFollowers');
+        if (!(payload && payload.offset === 0) && !state.hasMoreFollower) {
+            return;
         }
+        let offset = state.followerList.length;
+        if (payload && payload.offset === 0) {
+            offset = 0;
+        }
+        return this.$axios.get(`/user/${state.me.id}/followers?limit=3&offset=${offset}`, {
+            withCredentials: true,
+        })
+            .then((res) => {
+                commit('loadFollowers', {
+                    data: res.data,
+                    offset,
+                });
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     },
     loadFollowings({ commit, state }, payload) {
-        if (state.hasMoreFollowings) {
-            commit('loadFollowings');
+        if (!(payload && payload.offset === 0) && !state.hasMoreFollowing) {
+            return;
         }
-    }
+        let offset = state.followingList.length;
+        if (payload && payload.offset === 0) {
+            offset = 0;
+        }
+        return this.$axios.get(`/user/${state.me.id}/followings?limit=3&offset=${offset}`, {
+            withCredentials: true,
+        })
+            .then((res) => {
+                commit('loadFollowings', {
+                    data: res.data,
+                    offset,
+                });
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    },
+    follow({ commit }, payload) {
+        this.$axios.post(`/user/${payload.userId}/follow`, {}, {
+            withCredentials: true,
+        })
+            .then((res) => {
+                commit('following', {
+                    userId: payload.userId,
+                });
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    },
+    unfollow({ commit }, payload) {
+        return this.$axios.delete(`/user/${payload.userId}/follow`,  {
+            withCredentials: true,
+        })
+            .then((res) => {
+                commit('removeFollowing', {
+                    userId: payload.userId,
+                });
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    },
+    removeFollower({ commit }, payload) {
+        return this.$axios.delete(`/user/${payload.userId}/follower`, {
+            withCredentials: true,
+        })
+            .then((res) => {
+                commit('removeFollower', {
+                    userId: payload.userId,
+                });
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    },
 }
