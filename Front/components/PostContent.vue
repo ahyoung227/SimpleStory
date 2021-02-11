@@ -10,17 +10,17 @@
     </v-card-title>
     <v-card-text>
       <div>
-<!--        <template v-for="(node, i) in nodes">-->
-<!--          <nuxt-link-->
-<!--            v-if="node.startsWith('#')"-->
-<!--            :key="i"-->
-<!--            :to="`/hashtag/${node.slice(1)}`"-->
-<!--            style="color: deepskyblue"-->
-<!--          >-->
-<!--            {{node}}-->
-<!--          </nuxt-link>-->
-<!--          <template v-else>{{node}}</template>-->
-<!--        </template>-->
+        <template v-for="(node, i) in nodes">
+          <nuxt-link
+            v-if="node.startsWith('#')"
+            :key="i"
+            :to="`/hashtag/${node.slice(1)}`"
+            style="color: deepskyblue"
+          >
+            {{node}}
+          </nuxt-link>
+          <template v-else>{{node}}</template>
+        </template>
       </div>
 <!--      <div>{{$moment(post.createdAt).fromNow()}}</div>-->
     </v-card-text>
@@ -40,9 +40,9 @@ export default {
     },
   },
   computed: {
-    // nodes() {
-    //   return this.post.content.split(/(#[^\s#]+)/);
-    // },
+    nodes() {
+      return this.post.content.split(/(#[^\s#]+)/);
+    },
     me() {
       return this.$store.state.users.me;
     },

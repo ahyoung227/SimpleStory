@@ -92,7 +92,6 @@ router.get('/:id/comments', async (req, res, next) => {
         if (!post) {
             return res.status(404).send('Post does not exist');
         }
-        console.log(post)
         const comments = await db.Comment.findAll({
             where: {
                 postId: req.params.id,

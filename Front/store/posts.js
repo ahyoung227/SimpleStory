@@ -18,7 +18,6 @@ export const mutations = {
     },
     loadComments(state, payload) {
         const index = state.mainPosts.findIndex(v => v.id === payload.postId);
-        // 실수: state.mainPosts[index].Comments = payload.data;
         Vue.set(state.mainPosts[index], 'Comments', payload.data);
     },
     addComment(state, payload) {
@@ -88,7 +87,6 @@ export const actions = {
             withCredentials: true,
         })
             .then((res) => {
-                console.log('addComment');
                 commit('addComment', res.data);
             })
             .catch(() => {
@@ -116,7 +114,6 @@ export const actions = {
         }
     },
     loadPosts: throttle(async function ({ commit, state }, payload) {
-        console.log('loadPosts');
         try {
             if (payload && payload.reset) {
                 const res = await this.$axios.get(`/posts?limit=10`);
@@ -161,6 +158,7 @@ export const actions = {
         }
     }, 2000),
     loadHashtagPosts: throttle(async function ({ commit, state }, payload) {
+
         try {
             if (payload && payload.reset) {
                 const res = await this.$axios.get(`/hashtag/${payload.hashtag}?limit=10`);
@@ -224,7 +222,6 @@ export const actions = {
             withCredentials: true,
         })
             .then((res) => {
-                console.log('unlikePost');
                 commit('unlikePost', {
                     userId: res.data.userId,
                     postId: payload.postId,
