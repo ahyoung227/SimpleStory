@@ -38,7 +38,7 @@ router.post('/', isLoggedIn, async (req, res, next) => {
             const result = await Promise.all(hashtags.map(tag => db.Hashtag.findOrCreate({
                 where: { name: tag.slice(1).toLowerCase() }
             })));
-            await newPost.addHashTags(result.map(r=> r[0]))
+            await newPost.addHashtags(result.map(r=> r[0]))
         }
         if (req.body.image) {
             if(Array.isArray(req.body.image)) {
@@ -92,6 +92,7 @@ router.get('/:id/comments', async (req, res, next) => {
         if (!post) {
             return res.status(404).send('Post does not exist');
         }
+        console.log(post)
         const comments = await db.Comment.findAll({
             where: {
                 postId: req.params.id,

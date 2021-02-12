@@ -19,6 +19,8 @@
         <v-row>
           <v-col col="4">{{me.Followings.length}} Following</v-col>
           <v-col col="4">{{me.Followers.length}} Follower</v-col>
+        </v-row>
+        <v-row>
           <v-col col="4">{{me.Posts.length}} Post</v-col>
         </v-row>
       </v-container>

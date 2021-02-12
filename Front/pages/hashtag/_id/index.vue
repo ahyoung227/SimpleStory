@@ -12,11 +12,6 @@ export default {
   components: {
     PostCard,
   },
-  data() {
-    return {
-      name: 'Nuxt.js',
-    };
-  },
   computed: {
     mainPosts() {
       return this.$store.state.posts.mainPosts;

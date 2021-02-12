@@ -10,7 +10,7 @@ router.get('/:tag', async (req, res, next) => { // GET /hashtag/:tag?lastId=10&l
         if (parseInt(req.query.lastId, 10)) {
             where = {
                 id: {
-                    [db.Sequelize.Op.lt]: parseInt(req.query.lastId, 10), // less than
+                    [db.Sequelize.Op.lt]: parseInt(req.query.lastId, 10),
                 },
             };
         }
@@ -41,7 +41,9 @@ router.get('/:tag', async (req, res, next) => { // GET /hashtag/:tag?lastId=10&l
             order: [['createdAt', 'DESC']],
             limit: parseInt(req.query.limit, 10) || 10,
         });
+        console.log(posts)
         res.json(posts);
+
     } catch (err) {
         console.error(err);
         next(err);
