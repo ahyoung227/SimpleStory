@@ -44,5 +44,8 @@ module.exports = {
         browserBaseURL: 'http://localhost:3085',
         baseURL: 'http://localhost:3085',
         https: false,
+    },
+    server: {
+        port: process.env.PORT || 3085
     }
 };
