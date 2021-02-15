@@ -1,12 +1,15 @@
 {
-  "name": "vue-sns-front",
+  "name": "vue-story-front",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
     "@nuxtjs/axios": "^5.5.4",
+    "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/vuetify": "^1.2.1",
     "axios": "^0.21.1",
+    "lodash.throttle": "^4.1.1",
+    "moment": "^2.29.1",
     "nuxt": "^2.8.1",
     "vue": "^2.6.10",
     "vuetify": "^2.0.5",
@@ -18,6 +21,8 @@
   },
   "scripts": {
     "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
     "lint": "eslint **/*"
   },
   "author": "",

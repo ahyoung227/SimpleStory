@@ -38,7 +38,7 @@ router.post('/', isLoggedIn, async (req, res, next) => {
             const result = await Promise.all(hashtags.map(tag => db.Hashtag.findOrCreate({
                 where: { name: tag.slice(1).toLowerCase() }
             })));
-            await newPost.addHashTags(result.map(r=> r[0]))
+            await newPost.addHashtags(result.map(r=> r[0]))
         }
         if (req.body.image) {
             if(Array.isArray(req.body.image)) {
@@ -71,6 +71,39 @@ router.post('/', isLoggedIn, async (req, res, next) => {
         next(err);
     }
 });
+
+router.get('/:id', async (req, res, next) => {
+    try {
+        const post = await db.Post.findOne({
+            where: {
+                id: req.params.id,
+            },
+            include: [{
+                model: db.User,
+                attributes: ['id', 'nickname'],
+            }, {
+                model: db.Image,
+            }, {
+                model: db.User,
+                as: 'Likers',
+                attributes: ['id'],
+            }, {
+                model: db.Post,
+                as: 'Retweet',
+                include: [{
+                    model: db.User,
+                    attributes: ['id', 'nickname'],
+                }, {
+                    model: db.Image,
+                }],
+            }],
+        });
+        res.json(post)
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+})
 
 router.delete('/:id', async (req, res, next) => {
     try {

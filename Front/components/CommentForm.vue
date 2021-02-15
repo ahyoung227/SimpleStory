@@ -56,8 +56,8 @@
             this.successMessages = "Comment is posted";
             this.hideDetails = false;
           })
-          .catch(()=> {
-
+          .catch((err)=> {
+            console.log(err);
           })
         }
       }

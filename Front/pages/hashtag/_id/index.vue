@@ -12,11 +12,6 @@ export default {
   components: {
     PostCard,
   },
-  data() {
-    return {
-      name: 'Nuxt.js',
-    };
-  },
   computed: {
     mainPosts() {
       return this.$store.state.posts.mainPosts;
@@ -36,7 +31,6 @@ export default {
   },
   methods: {
     onScroll() {
-      console.log('scroll');
       if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
         if (this.hasMorePost) {
           this.$store.dispatch('posts/loadPosts');
