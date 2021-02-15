@@ -35,7 +35,7 @@ export default {
       }, {
         hid: 'ogurl', property: 'og:url', content: `https://vue.nodebird.com/post/${this.post.id}`,
       }],
-    };
+    }
   }
 };
 </script>

@@ -46,7 +46,7 @@ router.post('/', isNotLoggedIn, async (req, res, next) => {
         const hash = await bcrypt.hash(req.body.password, 12);
         const exUser = await db.User.findOne({
             where: {
-                email: req.body.email,
+                userId: req.body.userId,
             },
         });
         if (exUser) {
@@ -56,7 +56,7 @@ router.post('/', isNotLoggedIn, async (req, res, next) => {
             })
         }
         await db.User.create({
-            email: req.body.email,
+            userId: req.body.email,
             password: hash,
             nickname: req.body.nickname,
         });

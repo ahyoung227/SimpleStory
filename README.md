@@ -1,1 +1,1 @@
-# simpleSNS
+# SimpleStory
