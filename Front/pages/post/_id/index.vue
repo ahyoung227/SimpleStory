@@ -23,11 +23,11 @@ export default {
   },
   head() {
     return {
-      title: `${this.post.User.nickname}님의 게시글`,
+      title: `${this.post.User.nickname}'s post`,
       meta: [{
         hid: 'desc', name: 'description', content: this.post.content,
       }, {
-        hid: 'ogtitle', property: 'og:title', content: `${this.post.User.nickname}님의 게시글`,
+        hid: 'ogtitle', property: 'og:title', content: `${this.post.User.nickname}'s post`,
       }, {
         hid: 'ogdesc', property: 'og:description', content: this.post.content,
       }, {
