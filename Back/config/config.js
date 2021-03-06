@@ -1,23 +1,28 @@
-{
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+module.exports = {
   "development": {
     "username": "root",
-    "password": "nodejsbook",
+    "password": process.env.DB_PASSWORD,
     "database": "simpleSNS",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
+    "password": process.env.DB_PASSWORD,
+    "database": "simpleSNS",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "database_production",
+    "password": process.env.DB_PASSWORD,
+    "database": "simpleSNS",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
+

@@ -3,3 +3,5 @@ uploads
 .idea
 
 SimpleSns.pem
+
+.env
