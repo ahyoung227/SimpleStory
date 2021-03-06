@@ -41,8 +41,8 @@ module.exports = {
     },
     vuetify: {},
     axios: {
-        browserBaseURL: process.env.NODE_ENV === 'production' ? 'http://api.simplestory.ga' : 'http://localhost:3085',
-        baseURL: process.env.NODE_ENV === 'production' ? 'http://api.simplestory.ga' : 'http://localhost:3085',
+        browserBaseURL: process.env.NODE_ENV === 'http://api.simplestory.ga',
+        baseURL: process.env.NODE_ENV === 'http://api.simplestory.ga',
         https: false,
     },
     server: {
