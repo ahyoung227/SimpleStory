@@ -2,6 +2,7 @@
   <v-container>
     <v-card style="margin-bottom: 20px">
       <v-container>
+        {{other.nickname}}
         <v-row>
           <v-col cols="4">{{other.Followings.length}} Following</v-col>
           <v-col cols="4">{{other.Followers.length}} Follower</v-col>

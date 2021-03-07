@@ -4,6 +4,7 @@ export const state = () => ({
     followingList: [],
     hasMoreFollowers: true,
     hasMoreFollowings: true,
+    other: []
 });
 
 const totalFollowers = 8;
