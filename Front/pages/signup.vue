@@ -6,10 +6,10 @@
         <v-container>
           <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
             <v-text-field
-              v-model= "email"
-              label="email"
-              type="email"
-              :rules= "emailRules"
+              v-model= "userId"
+              label="userId"
+              type="userId"
+              :rules= "userIdRules"
               required
             />
             <v-text-field
@@ -52,14 +52,14 @@ export default {
   data() {
     return {
       valid: false,
-      email: "",
+      userId: "",
       password: "",
       passwordcheck: "",
       nickname: "",
       terms:  "",
-      emailRules: [
-        v => !!v || "email is required",
-        v => /.+@.+/.test(v) || "email is not valid"
+      userIdRules: [
+        v => !!v || "userId is required",
+        v => /.+@.+/.test(v) || "userId is not valid"
       ],
       nicknameRules: [
         v => !!v || "nickname is required",
@@ -91,7 +91,7 @@ export default {
     async onSubmitForm() {
       if (this.$refs.form.validate()) {
         this.$store.dispatch('users/signUp', {
-            email: this.email,
+            userId: this.userId,
             nickname: this.nickname,
             password: this.password
           })

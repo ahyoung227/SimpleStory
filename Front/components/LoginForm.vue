@@ -3,7 +3,7 @@
     <v-card>
       <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
         <v-container>
-          <v-text-field v-model="email" label="email" type="email" :rules= "emailRules" required />
+          <v-text-field v-model="userId" label="userId" type="userId" :rules= "userIdRules" required />
           <v-text-field v-model="password" label="password" type="password" :rules= "passwordRules" required />
           <v-btn color="green" type="submit" :disabled="!valid">login</v-btn>
           <v-btn nuxt to="/signup">signup</v-btn>
@@ -32,11 +32,11 @@ export default {
   data() {
     return {
       valid: false,
-      email: '',
+      userId: '',
       password: '',
-      emailRules: [
-        v => !!v || "email is required",
-        v => /.+@.+/.test(v) || "email is not valid"
+      userIdRules: [
+        v => !!v || "userId is required",
+        v => /.+@.+/.test(v) || "userId is not valid"
       ],
       passwordRules: [
         v => !!v || "password is required",
@@ -52,10 +52,10 @@ export default {
     onSubmitForm() {
       if (this.$refs.form.validate()) {
         this.$store.dispatch('users/logIn', {
-          email: this.email,
+          userId: this.userId,
           password: this.password,
         });
-        this.email="",
+        this.userId="",
         this.password=""
       }
     },

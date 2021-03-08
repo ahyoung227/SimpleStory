@@ -31,9 +31,9 @@ export default {
       }, {
         hid: 'ogdesc', property: 'og:description', content: this.post.content,
       }, {
-        hid: 'ogimage', property: 'og:image', content: this.post.Images[0] ? this.post.Images[0].src : 'https://vue.nodebird.com/vue-nodebird.png',
+        hid: 'ogimage', property: 'og:image', content: this.post.Images[0] ? this.post.Images[0].src : '',
       }, {
-        hid: 'ogurl', property: 'og:url', content: `https://vue.nodebird.com/post/${this.post.id}`,
+        hid: 'ogurl', property: 'og:url', content: ``,
       }],
     }
   }

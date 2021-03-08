@@ -18,7 +18,6 @@ export const mutations = {
     },
     loadComments(state, payload) {
         const index = state.mainPosts.findIndex(v => v.id === payload.postId);
-        // 실수: state.mainPosts[index].Comments = payload.data;
         Vue.set(state.mainPosts[index], 'Comments', payload.data);
     },
     addComment(state, payload) {
