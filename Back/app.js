@@ -17,7 +17,6 @@ const postsRouter = require('./routes/posts');
 const hashtagRouter = require('./routes/hashtag');
 const app = express();
 
-
 dotenv.config();
 db.sequelize.sync();
 passportConfig();
@@ -25,7 +24,11 @@ passportConfig();
 if(prod) {
     app.use(helmet());
     app.use(hpp());
-    app.use(morgan('combined'))
+    app.use(morgan('combined'));
+    app.use(cors({
+        origin: 'http://vue.nodebird.com',
+        credentials: true,
+    }));
 } else {
     app.use(morgan('dev'))
     app.use(cors({
