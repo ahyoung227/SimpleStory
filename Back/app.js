@@ -32,7 +32,7 @@ if(prod) {
 } else {
     app.use(morgan('dev'))
     app.use(cors({
-        origin: 'http://simplestory.ga',
+        origin: 'http://localhost:3080',
         credentials: true,
     }));
 }
@@ -48,7 +48,7 @@ app.use(session({
     cookie: {
         httpOnly: true,
         secure: false,
-        domain: prod && '.simplestory.ga.com'
+        domain: prod && '.simplestory.ga'
     },
 }));
 app.use(passport.initialize());
