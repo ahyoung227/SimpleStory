@@ -26,7 +26,7 @@ if(prod) {
     app.use(hpp());
     app.use(morgan('combined'));
     app.use(cors({
-        origin: 'http://vue.nodebird.com',
+        origin: 'http://simplestory.ga',
         credentials: true,
     }));
 } else {
