@@ -5,11 +5,11 @@ const db = require('../models');
 
 module.exports = () => {
     passport.use(new LocalStrategy({
-        usernameField: 'email',
+        usernameField: 'userId',
         passwordField: 'password',
-    }, async (email, password, done) => {
+    }, async (userId, password, done) => {
         try {
-            const exUser = await db.User.findOne({ where: { email } });
+            const exUser = await db.User.findOne({ where: { userId } });
             if(!exUser) {
                 return done(null, false, {reason: 'User does not exist.'});
             }

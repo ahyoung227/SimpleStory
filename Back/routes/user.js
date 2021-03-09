@@ -56,7 +56,7 @@ router.post('/', isNotLoggedIn, async (req, res, next) => {
             })
         }
         await db.User.create({
-            userId: req.body.email,
+            userId: req.body.userId,
             password: hash,
             nickname: req.body.nickname,
         });
@@ -76,7 +76,7 @@ router.post('/', isNotLoggedIn, async (req, res, next) => {
                 }
                 const fullUser = await db.User.findOne({
                     where: { id: user.id },
-                    attributes: ['id', 'email', 'nickname'],
+                    attributes: ['id', 'userId', 'nickname'],
                     include: [{
                         model: db.Post,
                         attributes: ['id']
@@ -116,7 +116,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
                 }
                 const fullUser = await db.User.findOne({
                     where: { id: user.id },
-                    attributes: ['id', 'email', 'nickname'],
+                    attributes: ['id', 'userId', 'nickname'],
                     include: [{
                         model: db.Post,
                         attributes: ['id'],
