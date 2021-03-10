@@ -44,11 +44,7 @@ module.exports = {
     axios: {
         browserBaseURL: process.env.NODE_ENV === 'production' ? 'http://api.simplestory.ga' : 'http://localhost:3085',
         baseURL: process.env.NODE_ENV === 'production' ? 'http://api.simplestory.ga' : 'http://localhost:3085',
-        https: false,
-        headers: {
-            'Access-Control-Allow-Origin' : '*',
-            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        }
+        https: false
     },
     server: {
         port: process.env.PORT || 3080
