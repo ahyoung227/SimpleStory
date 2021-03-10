@@ -34,7 +34,8 @@ module.exports = {
       analyze: false,
         extend(config, { isClient, isServer, isDev }) {
           if (isServer && !isDev) {
-              config.devtool = 'hidden-source-map';
+              config.
+                  devtool = 'hidden-source-map';
           }
           console.log('webpack', config, isServer, isClient);
         }
@@ -44,6 +45,10 @@ module.exports = {
         browserBaseURL: process.env.NODE_ENV === 'production' ? 'http://api.simplestory.ga' : 'http://localhost:3085',
         baseURL: process.env.NODE_ENV === 'production' ? 'http://api.simplestory.ga' : 'http://localhost:3085',
         https: false,
+        headers: {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        }
     },
     server: {
         port: process.env.PORT || 3080
