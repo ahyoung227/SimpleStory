@@ -37,8 +37,6 @@ passportConfig();
 //     }));
 // }
 
-dotenv.config();
-app.use(morgan('dev'))
 app.use('/', express.static('uploads'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
