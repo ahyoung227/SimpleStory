@@ -27,13 +27,13 @@ if(prod) {
     app.use(morgan('combined'));
     app.use(cors({
         origin: 'http://simplestory.ga',
-        credentials: true,
+        withCredentials: true,
     }));
 } else {
     app.use(morgan('dev'))
     app.use(cors({
         origin: 'http://localhost:3080',
-        credentials: true,
+        withCredentials: true,
     }));
 }
 
