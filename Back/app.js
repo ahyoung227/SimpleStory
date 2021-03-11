@@ -50,7 +50,7 @@ app.use(session({
     cookie: {
         httpOnly: true,
         secure: false,
-        domain: prod && '.simplestory.gam',
+        domain: '.simplestory.ga',
     },
 }));
 app.use(passport.initialize());
