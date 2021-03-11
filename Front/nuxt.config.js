@@ -42,8 +42,8 @@ module.exports = {
     },
     vuetify: {},
     axios: {
-        browserBaseURL: 'http://api.simplestory.ga'
-        baseURL: 'http://api.simplestory.ga'
+        browserBaseURL: 'http://api.simplestory.ga',
+        baseURL: 'http://api.simplestory.ga',
         https: false
     },
     server: {
