@@ -21,7 +21,7 @@ dotenv.config();
 db.sequelize.sync();
 passportConfig();
 
-if(prod) {
+// if(prod) {
     app.use(helmet());
     app.use(hpp());
     app.use(morgan('combined'));
@@ -29,13 +29,13 @@ if(prod) {
         origin: 'http://simplestory.ga',
         credentials: true,
     }));
-} else {
-    app.use(morgan('dev'))
-    app.use(cors({
-        origin: 'http://localhost:3080',
-        credentials: true,
-    }));
-}
+// } else {
+//     app.use(morgan('dev'))
+//     app.use(cors({
+//         origin: 'http://localhost:3080',
+//         credentials: true,
+//     }));
+// }
 
 dotenv.config();
 app.use(morgan('dev'))
