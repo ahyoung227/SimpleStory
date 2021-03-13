@@ -48,7 +48,7 @@ app.use(session({
     cookie: {
         httpOnly: true,
         secure: false,
-        domain: '.simplestory.ga',
+        domain: prod && '.simplestory.ga',
     },
 }));
 app.use(passport.initialize());
