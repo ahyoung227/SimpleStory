@@ -63,6 +63,6 @@ app.use('/post', postRouter);
 app.use('/posts', postsRouter);
 app.use('/hashtag', hashtagRouter);
 
-app.listen(3085, () => {
-    console.log(`backend ${prod ? process.env.PORT : 3085} is ready`)
-})
+app.listen(prod? process.env.PORT : 3085, () => {
+    console.log(`backend ${prod ? process.env.PORT : 3085} is ready`);
+});
