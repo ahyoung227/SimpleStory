@@ -27,13 +27,13 @@ if(prod) {
     app.use(morgan('combined'));
     app.use(cors({
         origin: 'http://simplestory.ga',
-        withCredentials: true,
+        credentials: true,
     }));
 } else {
     app.use(morgan('dev'))
     app.use(cors({
         origin: 'http://localhost:3080',
-        withCredentials: true,
+        credentials: true,
     }));
 }
 
@@ -64,5 +64,6 @@ app.use('/posts', postsRouter);
 app.use('/hashtag', hashtagRouter);
 
 app.listen(prod? process.env.PORT : 3085, () => {
+    console.log(process.env.PORT)
     console.log(`backend ${prod ? process.env.PORT : 3085} is ready`);
 });
