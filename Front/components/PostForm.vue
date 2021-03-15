@@ -14,7 +14,7 @@
             :rules="[v => !!v.trim() || 'Enter content.']"
             @input="onChangeTextarea"
         />
-        <v-btn type="submit" color="green" absolute right>Like</v-btn>
+        <v-btn type="submit" color="green" absolute right>post</v-btn>
         <input ref="imageInput" type="file" multiple hidden @change="onChangeImages">
         <v-btn type="button" @click="onClickImageUpload">Image Upload</v-btn>
         <div>
@@ -78,6 +78,7 @@ export default {
       [].forEach.call(e.target.files, (f) => {
         imageFormData.append('image', f);
       });
+      console.log(imageFormData)
       this.$store.dispatch('posts/uploadImages', imageFormData);
     },
     onRemoveImage(index) {

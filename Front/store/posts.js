@@ -181,14 +181,17 @@ export const actions = {
         }
     }, 2000),
     uploadImages({ commit }, payload) {
+        console.log('uploadImages is executed!')
         this.$axios.post('/post/images', payload, {
             withCredentials: true,
         })
             .then((res) => {
                 commit('concatImagePaths', res.data);
+                console.log('success!')
             })
             .catch((err) => {
                 console.error(err);
+                console.log('error!')
             });
     },
     retweet({ commit }, payload) {
