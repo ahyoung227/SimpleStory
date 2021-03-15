@@ -12,7 +12,7 @@ const router = express.Router();
 AWS.config.update({
     region: "us-east-2",
     accessKeyId: process.env.S3_ACCESS_KEY_ID,
-    secretAceessKey: process.env.S3_ACCESS_KEY,
+    secretAccessKey: process.env.S3_ACCESS_KEY,
 });
 
 const upload = multer({
@@ -27,7 +27,6 @@ const upload = multer({
 });
 
 router.post('/images', isLoggedIn, upload.array('image'), (req, res) => {
-    console.log(req.files)
     console.log(req.files.map(v => v))
     console.log(res.json(req.files.map(v => v.location)))
     res.json(req.files.map(v => v.location));
