@@ -3,11 +3,13 @@ const multer = require('multer');
 const path = require('path');
 const AWS = require('aws-sdk');
 const multerS3 = require('multer-s3');
+const dotenv = require('dotenv');
 
 const db = require('../models')
 const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
+dotenv.config();
 
 AWS.config.update({
     region: "us-east-2",
