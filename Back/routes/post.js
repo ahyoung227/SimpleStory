@@ -27,9 +27,12 @@ const upload = multer({
 });
 
 router.post('/images', isLoggedIn, upload.array('image'), (req, res) => {
-    console.log(req.files.map(v => v))
-    console.log(res.json(req.files.map(v => v.location)))
-    res.json(req.files.map(v => v.location));
+    try {
+        res.json(req.files.map(v => v.location));
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
 });
 
 router.post('/', isLoggedIn, async (req, res, next) => {

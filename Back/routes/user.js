@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', isLoggedIn, async (req, res, next) => {
     try {
-        const user = req.user;
+        const user = await req.user;
         res.json(user);
     } catch (err) {
         console.error(err);
